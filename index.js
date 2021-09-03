@@ -91,7 +91,7 @@ function engineerPrompt(){
         {
             type: 'input',
             message: 'What is their email address?',
-            name: 'employeeEmail',
+            name: 'engineerEmail',
         },
         //github
         {
@@ -143,7 +143,7 @@ function internPrompt(){
         },
     ])
     .then( (res)=> {
-        let internName = res.interName;
+        let internName = res.internName;
         let internID = res.internID;
         let internEmail = res.internEmail;
         let school = res.internSchool;
@@ -183,48 +183,61 @@ function generateHTML(){
     //generating cards for each employee
     for (var i = 0; i < team.length; i++){
         if (team[i].getRole() === 'Manager'){
+            // let role = team[i].getRole();
             let card = 
-            `<div class = "card">
-                <div class = "card-body">
-                    <h4 class = "card-title"> ${team[i].getName()}</h4>
-                    <h5 class = "card-subtitle"> ${team[i].getRole()}</h5>
-                    <ul class = "list-group list-group-flush">
-                        <li class = "list-group-item">ID: ${team[i].getID()} </li>
-                        <li class = "list-group-item">Email: ${team[i].getEmail()} </li>
-                        <li class = "list-group-item">Office Number: ${team[i].getOfficeNumber()} </li>
-                    </ul>
+            `<div class="col-3 mt-2">
+                <div class = "card">
+                    <div class = "card-body">
+                        <div class = "card-header bg-primary">
+                            <h4 class = "bg-blue card-title text-white"> ${team[i].getName()}</h4>
+                            <h5 class = "bg-blue card-subtitle text-white"> ${team[i].getRole()}</h5>
+                        </div>    
+                        <ul class = "list-group list-group-flush">
+                            <li class = "list-group-item">ID: ${team[i].getID()} </li>
+                            <li class = "list-group-item">Email: <a href='mailto:${team[i].getEmail()}'>${team[i].getEmail()}</a></li>
+                            <li class = "list-group-item">Office Number: ${team[i].getOfficeNumber()} </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>    
+            </div>        
             `;
             cardHtml += card;
         }else if (team[i].getRole() === 'Engineer'){
             let card = 
-            `<div class = "card">
-                <div class = "card-body">
-                    <h4 class = "card-title"> ${team[i].getName()}</h4>
-                    <h5 class = "card-subtitle"> ${team[i].getRole()}</h5>
-                    <ul class = "list-group list-group-flush">
-                        <li class = "list-group-item">ID: ${team[i].getID()} </li>
-                        <li class = "list-group-item">Email: ${team[i].getEmail()} </li>
-                        <li class = "list-group-item">GitHub Username: ${team[i].getGithub()} </li>
-                    </ul>
+            `<div class="col-3 mt-2">
+                <div class = "card">
+                    <div class = "card-body">
+                        <div class = "card-header bg-primary">
+                            <h4 class = "card-title text-white"> ${team[i].getName()}</h4>
+                            <h5 class = "card-subtitle text-white"> ${team[i].getRole()}</h5>
+                        </div>    
+                        <ul class = "list-group list-group-flush">
+                            <li class = "list-group-item">ID: ${team[i].getID()} </li>
+                            <li class = "list-group-item">Email: <a href='mailto:${team[i].getEmail()}'>${team[i].getEmail()}</a></li>
+                            <li class = "list-group-item">GitHub Username: <a href='https://github.com/${team[i].getGithub()}'>${team[i].getGithub()}</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>    
+            </div>        
             `;
             cardHtml += card;
         }else if (team[i].getRole() === 'Intern'){
             let card = 
-            `<div class = "card">
-                <div class = "card-body">
-                    <h4 class = "card-title"> ${team[i].getName()}</h4>
-                    <h5 class = "card-subtitle"> ${team[i].getRole()}</h5>
-                    <ul class = "list-group list-group-flush">
-                        <li class = "list-group-item">ID: ${team[i].getID()} </li>
-                        <li class = "list-group-item">Email: ${team[i].getEmail()} </li>
-                        <li class = "list-group-item">School: ${team[i].getSchool()} </li>
-                    </ul>
+            `<div class="col-3 mt-2">
+                <div class = "card">
+                    <div class = "card-body">
+                        <div class = "card-header bg-primary">
+                            <h4 class = "card-title text-white"> ${team[i].getName()}</h4>
+                            <h5 class = "card-subtitle text-white"> ${team[i].getRole()}</h5>
+                        </div>    
+                        <ul class = "list-group list-group-flush">
+                            <li class = "list-group-item">ID: ${team[i].getID()} </li>
+                            <li class = "list-group-item">Email: <a href='mailto:${team[i].getEmail()}'>${team[i].getEmail()}</a></li>
+                            <li class = "list-group-item">School: ${team[i].getSchool()} </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>    
+            </div>        
             `;
             cardHtml += card;
         }
@@ -243,13 +256,15 @@ function generateHTML(){
         <title>Team Profile Generator</title>
     </head>
     <body>
-        <div class = "bg-danger text-align-center">
-            <h1 class = "text-white"> My Team </h1>
+        <div class = "bg-danger justify-content-center text-align-center">
+            <h1 class = "text-white text-center"> My Team </h1>
         </div>
         
-        <div class = "card">
-            ${cardHtml}
-        </div>
+        <div class = "container">
+            <div class = "row">
+                ${cardHtml}
+            </div>
+        </div>    
     </body>
     </html>
     `;
