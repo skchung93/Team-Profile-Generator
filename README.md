@@ -33,3 +33,14 @@ There are test files that use Jest in this program. If you want to test it, simp
 #### Email & Github <a name="contact"></a>
 skchung93@gmail.com </br>
 skchung93  
+
+Walkthrough video showing how to use the code:
+https://user-images.githubusercontent.com/85310173/132567289-a7370798-2957-4569-bdde-c788d468bfd1.mov
+
+Example HTML Image:
+![Screen Shot 2021-09-08 at 11 37 40 AM](https://user-images.githubusercontent.com/85310173/132566154-dcff5bd4-fbac-4b29-94c6-966fd793a04f.png)
+
+Walkthrough Video showing passing tests:
+https://user-images.githubusercontent.com/85310173/132566417-5dc11a33-b51c-41b9-a580-c8bd7cfad68e.mov
+
+
